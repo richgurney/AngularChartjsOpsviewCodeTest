@@ -31,7 +31,7 @@
             <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
             <option value=''>- Choose Time To Edit -</option>
           </select> 
-          <input class="customForm" type="text" ng-model="chart.selectedUsersTimeVal" placeholder="Value"></input>
+          <input class="customForm" type="text" ng-model="chart.selectedUsersTimeVal" placeholder=" Number of Users"></input>
           <button ng-click="chart.updateActiveUsers()" class="btn floatRight">
             UPDATE
           </button>
