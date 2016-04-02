@@ -4,9 +4,7 @@ angular.module('chartjs-directive', []).
   directive('chart', function () {
     var baseWidth = 600;
     var baseHeight = 400;
-
-    alert("im getting here")
-
+    
     return {
       restrict: 'E',
       template: '<canvas></canvas>',
