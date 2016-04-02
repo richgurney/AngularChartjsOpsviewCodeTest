@@ -1,8 +1,70 @@
-#editor {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+@font-face {
+  font-family:"OpenSans-Regular";
+  src: url("../fonts/OpenSans-Regular.ttf") /* TTF file for CSS3 browsers */
 }
 
+@font-face {
+  font-family:"OpenSans-Light";
+  src: url("../fonts/OpenSans-Light.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+  font-family:"OpenSans-ExtraBold";
+  src: url("../fonts/OpenSans-ExtraBold.ttf") /* TTF file for CSS3 browsers */
+}
+
+@font-face {
+  font-family:"OpenSans-Semibold";
+  src: url("../fonts/OpenSans-Semibold.ttf") /* TTF file for CSS3 browsers */
+}
+
+header {
+	padding-left: 30px;
+  padding-top: 20px;
+  position: relative;
+}
+
+main {
+	background-color: rgba(128, 128, 128, 0.08);
+  margin: 10px;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 960px;
+}
+
+.chartContainer {
+	width: 960px;
+	margin: auto;
+	font-family:"OpenSans-Semibold";
+}
+
+.editBar {
+	background-color: rgba(53, 44, 44, 0.08);
+  width: 960px;
+  padding: 15px;
+}
+
+.customForm {
+	height: 35px;
+	margin-left: 10px;
+}
+
+.floatRight {
+	float: right;
+}
+
+.chartContainer h1 {
+	margin-top: 0px;
+  margin-left: 20px;
+  color: rgba(62, 33, 85, 0.86);
+  padding-top: 10px;
+}
+
+.chart {
+	margin: 10px;
+}
+
+#editController {
+
+}

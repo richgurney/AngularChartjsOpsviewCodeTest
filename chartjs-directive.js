@@ -2,9 +2,9 @@
 
 angular.module('chartjs-directive', []).
   directive('chart', function () {
-    var baseWidth = 600;
+    var baseWidth = 400;
     var baseHeight = 400;
-    
+
     return {
       restrict: 'E',
       template: '<canvas></canvas>',
@@ -17,7 +17,7 @@ angular.module('chartjs-directive', []).
         var chart;
 
         var options = {
-          type:   attrs.type   || "Line",
+          type:   attrs.type,
           width:  attrs.width  || baseWidth,
           height: attrs.height || baseHeight
         };
