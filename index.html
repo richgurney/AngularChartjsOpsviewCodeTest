@@ -13,15 +13,14 @@
     <script type="text/javascript" src="js/opsviewController.js"></script>
   </head>
   <body class="chartContainer" ng-controller="myController as chart">
-    <div id="editController">
-      
-    </div>
     <header>
-    <img src="images/logo.png">
+      <img src="images/logo.png">
+      <button ng-click="chart.showAverages()" class="btn floatRight">
+        SHOW ALL AVERAGES
+      </button>
     </header>
     <main>
-
-      <!-- users chart -->
+      <!-- Active Users Chart -->
       <div id="activeUsers" class="chartContainer">
         <h1>Active Users</h1>
         <chart value="activeUsers" class="chart" type="Line" width="940" height="300"></chart>
@@ -32,13 +31,42 @@
             <option value=''>- Choose Time To Edit -</option>
           </select> 
           <input class="customForm" type="text" ng-model="chart.selectedUsersTimeVal" placeholder=" Number of Users"></input>
+          <button ng-click="chart.averageUsers()" class="btn floatRight">
+            SHOW AVERAGE
+          </button>
           <button ng-click="chart.updateActiveUsers()" class="btn floatRight">
             UPDATE
           </button>
         </div>
-        
       </div>
-      <!-- sales chart -->
+
+      <!-- Active Sessions -->
+      <div id="timeSpent" class="chartContainer">
+        <h1>Active Sessions</h1>
+        <chart value="activeSession" class="chart" type="Radar" width="910" height="700"></chart>
+        <div class="editBar">
+          <img src="images/logo2.png">
+          <!-- Dropdown to select time of week -->
+          <select class="customForm" ng-model="chart.selectedChart">
+            <option ng-repeat="selection in chart.activeSession.datasets" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
+            <option value=''>- Choose Time of Day -</option>
+          </select> 
+          <!-- Dropdown to select amount of time -->
+          <select class="customForm" ng-model="chart.selectedActiveSessionTime">
+            <option ng-repeat="selection in chart.timeLabels" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
+            <option value=''>- Choose Time of Day -</option>
+          </select> 
+          <input class="customForm" type="text" ng-model="chart.selectedActiveSessionTimeVal" placeholder=" Active Sessions"></input>
+          <button ng-click="chart.addAverageActiveSessions()" class="btn floatRight">
+            SHOW AVERAGE
+          </button>
+          <button ng-click="chart.updateActiveSessions()" class="btn floatRight">
+            UPDATE
+          </button>
+        </div>
+      </div>
+
+      <!-- Number of Sales -->
       <div id="sales" class="chartContainer">
         <h1>Sales P/Hour</h1>
         <chart value="sales" class="chart" type="Bar" width="940" height="300"></chart>
@@ -48,47 +76,55 @@
             <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
             <option value=''>- Choose Time To Edit -</option>
           </select> 
-          <input class="customForm" type="text" ng-model="chart.selectedSalesTimeVal" placeholder="Value"></input>
+          <input class="customForm" type="text" ng-model="chart.selectedSalesTimeVal" placeholder=" Sales Per Hour"></input>
+          <button ng-click="chart.addAverageSales()" class="btn floatRight">
+            SHOW AVERAGE
+          </button>
           <button ng-click="chart.updateSales()" class="btn floatRight">
             UPDATE
           </button>
         </div>
-        
       </div>
 
-      <div id="sales" class="chartContainer">
-        <chart value="sales" class="chart" type="Radar" width="910" height="300"></chart>
-        <select ng-model="chart.selectedSalesTime">
-          <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
-        </select> 
-        <input type="text" ng-model="chart.selectedSalesTimeVal" placeholder="Value"></input>
-        <button ng-click="chart.updateSales()" class="btn btn-success">
-          UPDATE
-        </button>
+      <!-- System Performance -->
+      <div id="performance" class="chartContainer">
+        <h1>System Performance</h1>
+        <chart value="performance" class="chart" type="Line" width="910" height="300"></chart>
+        <div class="editBar">
+          <img src="images/logo2.png">
+          <select class="customForm" ng-model="chart.selectedPerformanceTime">
+            <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
+            <option value=''>- Choose Time To Edit -</option>
+          </select> 
+          <input class="customForm" type="text" ng-model="chart.selectedPerformaceTimeVal" placeholder=" Performance"></input>
+          <button ng-click="chart.addAveragePerformance()" class="btn floatRight">
+            SHOW AVERAGE
+          </button>
+          <button ng-click="chart.updatePerformance()" class="btn floatRight">
+            UPDATE
+          </button>
+        </div>
       </div>
 
-      <div id="sales" class="chartContainer">
-        <chart value="sales" class="chart" type="Radar" width="910" height="300"></chart>
-        <select ng-model="chart.selectedSalesTime">
-          <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
-        </select> 
-        <input type="text" ng-model="chart.selectedSalesTimeVal" placeholder="Value"></input>
-        <button ng-click="chart.updateSales()" class="btn btn-success">
-          UPDATE
-        </button>
+      <!-- System Crash -->
+      <div id="crash" class="chartContainer">
+        <h1>System Crash</h1>
+        <chart value="crash" class="chart" type="Bar" width="910" height="300"></chart>
+        <div class="editBar">
+          <img src="images/logo2.png">
+          <select class="customForm" ng-model="chart.selectedCrashTime">
+            <option ng-repeat="selection in chart.labelNames" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
+            <option value=''>- Choose Time To Edit -</option>
+          </select> 
+          <input class="customForm" type="text" ng-model="chart.selectedCrashTimeVal" placeholder=" Crashes"></input>
+          <button ng-click="chart.addAverageCrash()" class="btn floatRight">
+            SHOW AVERAGE
+          </button>
+          <button ng-click="chart.updateCrash()" class="btn floatRight">
+            UPDATE
+          </button>
+        </div>
       </div>
-
     </main>
-
-    
-	      
-	     
-
-
-    
-
-        
-        
-	 
   </body>
 </html>
