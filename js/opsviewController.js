@@ -1,6 +1,8 @@
 angular.module('myApp', ['chartjs-directive'])
   .controller('myController', function($scope){
   	var self = this;
+
+    // Replicated Data for charts
   	self.labels = ["7:00 - 9:00","9:00 - 11:00","11:00 - 13:00","13:00 - 15:00","15:00 - 17:00","17:00 - 19:00","19:00 - 21:00"]; 
     self.labelNames = [
 			{ "label" : "7:00 - 9:00" },
@@ -12,10 +14,10 @@ angular.module('myApp', ['chartjs-directive'])
 			{ "label" : "19:00 - 21:00" }
 		];
 
-
   	// Active Users ------------------------------
   	self.selectedUsersTime;
   	self.selectedUsersTimeVal;
+    // Data for charts
   	self.activeUsers = [
       { 
         label: "Active Users",
@@ -36,9 +38,13 @@ angular.module('myApp', ['chartjs-directive'])
         data : [4,5,5,30,3,2,1] 
       }
     ];
+    // Take input from form and changes appropriate 
+    // data in the data array
     self.updateActiveUsers = function() {
+      // bound to input field
  			var selected = self.selectedUsersTime;
 			// find the index of selected time
+      // and change data
 			for (var i=0; i<self.labels.length; i++) {
 				if (self.labels[i] == selected) {
 					index = self.labels.indexOf(selected)
@@ -46,13 +52,14 @@ angular.module('myApp', ['chartjs-directive'])
 				} 
 			}
 		};
+    // Adds the average data to the chart
     self.averageUsers = function() {
       average = self.averageActiveUsers[0];
       self.activeUsers.push(average);
     }
 
-
 		// Active Sesssions ------------------------------
+    // Bound global variables to form fields
     self.selectedChart;
 		self.selectedActiveSessionTime;
 		self.selectedActiveSessionTimeVal;
@@ -65,6 +72,7 @@ angular.module('myApp', ['chartjs-directive'])
       { "label" : "20min - 25min" },
       { "label" : "25min +" }
     ];
+    // Data for multi represented chart
 		self.activeSession = {
       labels: ["< 1min", "1min - 5min", "5min - 10min", "10min - 15min", "15min - 20min", "20min - 25min", "25min +"],
       datasets: [
@@ -100,6 +108,7 @@ angular.module('myApp', ['chartjs-directive'])
         }
       ]
     };
+    // Average Sessions Data
     self.averageSessions = [
       { 
         label: "Average",
@@ -112,6 +121,7 @@ angular.module('myApp', ['chartjs-directive'])
         data: [43,45,88,51,41,58,19]
       }
     ];
+    // Updates the Sessions with bound form data
     self.updateActiveSessions = function() {
       var selectedChart = self.selectedChart;
       var selectedTime = self.selectedActiveSessionTime;
@@ -133,15 +143,17 @@ angular.module('myApp', ['chartjs-directive'])
         }
       }
     };
+    // Updates chart with average data
     self.addAverageActiveSessions = function() {
       average = self.averageSessions[0];
       self.activeSession.datasets.push(average);
     }
 
-
 		// Sales------------------------------
+    // Bound data from form fields
   	self.selectedSalesTime;
   	self.selectedSalesTimeVal;
+    // Chart data for sales
   	self.sales = [
       { 
         label: "Sales",
@@ -166,6 +178,7 @@ angular.module('myApp', ['chartjs-directive'])
         data: [2,3,7,17,41,8,14]
       }
     ];
+    // Updates Sales chart with bound form fields
     self.updateSales = function() {
  			var selected = self.selectedSalesTime;
 			// find the index of selected time
@@ -176,15 +189,17 @@ angular.module('myApp', ['chartjs-directive'])
 				} 
 			}
 		};
+    // Updates chart with average data
     self.addAverageSales = function() {
       average = self.averageSales[0];
       self.sales.push(average);
     }
 
-
 		// System Performance------------------------------
+    // Bound data from field
   	self.selectedPerformanceTime;
   	self.selectedPerformanceTimeVal;
+    // Data for the chart
   	self.performance = [
       { 
         fillColor: "rgba(218, 128, 10, 0.84)",
@@ -208,6 +223,7 @@ angular.module('myApp', ['chartjs-directive'])
         data: [70,60,50,56,28,40,14]
       }
     ];
+    // Updates the chart with bound form fields
     self.updatePerformance = function() {
     	console.log("gets here")
  			var selected = self.selectedPerformanceTime;
@@ -219,15 +235,17 @@ angular.module('myApp', ['chartjs-directive'])
 				} 
 			}
 		};
+    // Updates chart with average data
     self.addAveragePerformance = function() {
       average = self.averageSystemPerformance[0];
       self.performance.push(average);
     }
 
-
 		// System Cashes------------------------------
+    // Bound data from fields
   	self.selectedCrashTime;
   	self.selectedCrashTimeVal;
+    // Data for chart
   	self.crash = [
       { 
         fillColor: "rgba(189, 22, 22, 0.86)",
@@ -251,6 +269,7 @@ angular.module('myApp', ['chartjs-directive'])
         data: [2,3,4,15,20,40,14]
       }
     ];
+    // Updates crash chart with bound data from form
     self.updateCrash = function() {
     	console.log("gets here")
  			var selected = self.selectedCrashTime;
@@ -262,14 +281,14 @@ angular.module('myApp', ['chartjs-directive'])
 				} 
 			}
 		};
+    // Adds average data to graph
     self.addAverageCrash = function() {
       average = self.averageCrash[0];
       self.crash.push(average);
     }
 
-
-
 		// Generates data when page is loaded------------------------------
+    // Specifies where each chart will get its data from
     $scope.generateData = function(){
       var activeUsers = {
         labels : self.labels,
@@ -307,6 +326,5 @@ angular.module('myApp', ['chartjs-directive'])
       self.averageUsers();
     }
 
- 
     $scope.generateData();
   });
