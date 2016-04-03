@@ -31,6 +31,7 @@ main {
   padding-top: 10px;
   padding-bottom: 10px;
   width: 960px;
+  margin-top: 56px;
 }
 
 .chartContainer {
