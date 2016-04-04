@@ -54,7 +54,7 @@
               <!-- Dropdown to select amount of time -->
               <select class="customForm" ng-model="chart.selectedActiveSessionTime">
                 <option ng-repeat="selection in chart.timeLabels" value="{{selection.label}}"  placeholder="Select Month">{{selection.label}}</option>
-                <option value=''>- Choose Time of Day -</option>
+                <option value=''>- Session Length -</option>
               </select> 
               <input class="customForm" type="text" ng-model="chart.selectedActiveSessionTimeVal" placeholder=" Active Sessions"></input>
               <button ng-click="chart.updateActiveSessions()" class="btn">
